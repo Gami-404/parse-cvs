@@ -1,0 +1,16 @@
+{
+  "name": "testparser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-uglifier": "^0.5.41",
+    "pdf-text-extract": "^1.5.0",
+    "pdftohtmljs": "^0.4.2"
+  }
+}
