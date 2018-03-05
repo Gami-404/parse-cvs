@@ -1,63 +1,8 @@
 // test attributes is always required
 // fetch optional
-SectionParser.SECTIONS_FETCHERS_REGEX = {
-    projects: {
-        test: /^[\s]*?projects?\s*\n*$/giu,
-        fetch: /projects?\s?:?\s*\n+(.|\n)*$/gimu
-    },
-    skills: {
-        test: /^[\s]*?SKILLS?\s*\n*$/giu,
-        fetch: /SKILLS?\s?:?\s*\n+(.|\n)*$/gimu,
-    },
-    os: {
-        test: /^[\s*\n*]?Operating\ssystems?:?$/gimu,
-        fetch: /Operating\ssystems?:?\s*\n+(.|\n)*$/gimu,
-    },
-    languageSkills: {
-        test: /^[\s*\n*]?Languages?\s?Skills?[\s*]?:?$/gimu,
-        fetch: /Languages?\s?Skills?[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    softSkills: {
-        test: /^[\s*\n*]?Soft\s?Skills?[\s*]?:?$/gimu,
-        fetch: /Soft\s?Skills?[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    employment: {
-        test: /^[\s*\n*]?employment[\s*]?:?$/gimu,
-        fetch: /employment[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    awards: {
-        test: /^[\s*\n*]?AWARDS?[\s*]?:?$/gimu,
-        fetch: /AWARDS?[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    technical_skills: {
-        test: /^[\s*\n*]?technical\s?skills?[\s*]?:?$/gimu,
-        fetch: /technical\s?skills?[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    personal_data: {
-        test: /^[\s*\n*]?personal\s?data[\s*]?:?$/gimu,
-        fetch: /personal\s?data[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    education: {
-        test: /^[\s*\n*]?education[\s*]?:?$/gimu,
-        fetch: /education[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    objective: {
-        test: /^[\s*\n*]?objective[\s*]?:?$/gimu,
-        fetch: /objective[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    hobbies: {
-        test: /^[\s*\n*]?hobbies?[\s*]?:?$/gimu,
-        fetch: /hobbies?[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    experience: {
-        test: /^[\s*\n*]?experiences?[\s*]?:?$/gimu,
-        fetch: /experiences?[\s*]?:?\s*\n+(.|\n)*$/gimu,
-    },
-    computer_skills: {
-        test: /^[\s*\n*]?computer\s?skills?[\s*]?:?$/gimu,
-        fetch: /computer\s?skills?\s*\n+(.|\n)*$/gimu,
-    },
-};
+var getRegexs=require('./helper').getRegexs;
+
+SectionParser.SECTIONS_FETCHERS_REGEX = getRegexs();
 
 /**
  *

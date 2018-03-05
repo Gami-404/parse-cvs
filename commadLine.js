@@ -38,7 +38,7 @@ for (pdf_file of pdfs) {
         var result = (sectionparser.parseAllToJson());
 
         let baseName = path.basename(currentFilePath, '.pdf');
-        fs.writeFile(path.join(resultDirectory,baseName + ".txt"), JSON.stringify(result,null,2), function (err) {
+        fs.writeFile(path.join(resultDirectory,baseName + ".json"), JSON.stringify(result,null,2), function (err) {
             if (err) {
                 return console.log(err);
             }
