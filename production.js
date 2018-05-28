@@ -24,9 +24,9 @@ extract(file_path, {splitPages: false}, function (err, pages) {
     }
     // console.log(pages);
     var sectionparser = new SectionParser(pages);
-    console.log(pages.join(""));
+    // console.log(pages.join(""));
     var result = (sectionparser.parseAllToJson());
-    // console.log(JSON.stringify(result))
+    console.log(JSON.stringify(result))
 });
 
 

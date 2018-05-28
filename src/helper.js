@@ -3,7 +3,7 @@
  * @param strings
  * @returns {Array}
  */
-const createRegexObject = function (strings) {
+const createRegexObject = function (strings, groupName) {
     let objects = [];
 
     strings.map(function (string) {
@@ -11,7 +11,8 @@ const createRegexObject = function (strings) {
         objects.push({
             test: new RegExp("^[\\s]*?" + string + "\\s*\\n*$", 'giu'),
             fetch: new RegExp(string + "\\s?:?\\s*\\n+(.|\\n)*$", 'gimu'),
-            name: name
+            name: name,
+            group: groupName
         })
     });
     return objects;
@@ -25,8 +26,16 @@ const createRegexObject = function (strings) {
 const getRegexs = function () {
     let fs = require('fs');
     let path = require('path');
-    var keys = JSON.parse(fs.readFileSync(path.join(__dirname, 'regex', 'keys.json'), 'utf8'));
-    let regexs = createRegexObject(keys);
+    let keysDir = path.join(__dirname, 'keys');
+
+
+    var regexs = [];
+    let groupFiles = fs.readdirSync(keysDir);
+    for (groupFile  of groupFiles) {
+        let currentFilePath = path.join(keysDir, groupFile);
+        let groupName = path.basename(currentFilePath, '.json');
+        regexs = regexs.concat(createRegexObject(JSON.parse(fs.readFileSync(currentFilePath, 'utf8')), groupName));
+    }
     let returnedObject = {};
     regexs.map(function (regex) {
         returnedObject[regex.name] = regex;
@@ -34,5 +43,7 @@ const getRegexs = function () {
     return returnedObject;
 };
 
-
 module.exports.getRegexs = getRegexs;
+
+// Make Regexs cached
+// module.exports.regexs = getRegexs();

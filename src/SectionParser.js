@@ -1,6 +1,6 @@
 // test attributes is always required
 // fetch optional
-var getRegexs=require('./helper').getRegexs;
+var getRegexs = require('./helper').getRegexs;
 
 SectionParser.SECTIONS_FETCHERS_REGEX = getRegexs();
 
@@ -97,8 +97,15 @@ SectionParser.prototype.getProjectsSection = function () {
 SectionParser.prototype.parseAllToJson = function () {
     var sections = {};
     for (let regex_name in SectionParser.SECTIONS_FETCHERS_REGEX) {
-        if (SectionParser.SECTIONS_FETCHERS_REGEX[regex_name].fetch) {
-            sections[regex_name] = getSection(regex_name, this.pages);
+        let keyObject = SectionParser.SECTIONS_FETCHERS_REGEX[regex_name];
+        if (keyObject.fetch) {
+            if (!(sections.hasOwnProperty(keyObject.group) && Array.isArray(sections[keyObject.group]))) {
+                sections[keyObject.group] = [];
+            }
+            sections[keyObject.group].push({
+                key: regex_name,
+                section: getSection(regex_name, this.pages)
+            });
         }
     }
     return sections;
