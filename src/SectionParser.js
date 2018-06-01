@@ -102,10 +102,14 @@ SectionParser.prototype.parseAllToJson = function () {
             if (!(sections.hasOwnProperty(keyObject.group) && Array.isArray(sections[keyObject.group]))) {
                 sections[keyObject.group] = [];
             }
-            sections[keyObject.group].push({
-                key: regex_name,
-                section: getSection(regex_name, this.pages)
-            });
+            let sectionPragraph= getSection(regex_name, this.pages);
+            if(sectionPragraph){
+                sections[keyObject.group].push({
+                    key: regex_name,
+                    section: sectionPragraph
+                });
+            }
+
         }
     }
     return sections;
