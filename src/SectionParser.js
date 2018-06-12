@@ -2,6 +2,7 @@
 // fetch optional
 var getRegexs = require('./helper').getRegexs;
 
+console.log(getRegexs());
 SectionParser.SECTIONS_FETCHERS_REGEX = getRegexs();
 
 /**

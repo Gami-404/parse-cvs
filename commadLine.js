@@ -33,17 +33,12 @@ for (pdf_file of pdfs) {
             return
         }
 
-        var sectionparser = new SectionParser(pages);
+        let sectionparser = new SectionParser(pages);
 
-        var result = (sectionparser.parseAllToJson());
+        let result = (sectionparser.parseAllToJson());
 
         let baseName = path.basename(currentFilePath, '.pdf');
-        fs.writeFile(path.join(resultDirectory,baseName + ".json"), JSON.stringify(result,null,2), function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log(currentFilePath,"100% Done")
-        });
+        fs.writeFileSync(path.join(resultDirectory,baseName + ".json"), JSON.stringify(result,null,2));
 
     });
 }
