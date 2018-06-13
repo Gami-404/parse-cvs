@@ -2,7 +2,6 @@
 // fetch optional
 var getRegexs = require('./helper').getRegexs;
 
-console.log(getRegexs());
 SectionParser.SECTIONS_FETCHERS_REGEX = getRegexs();
 
 /**
@@ -12,7 +11,8 @@ SectionParser.SECTIONS_FETCHERS_REGEX = getRegexs();
  */
 function SectionParser(pages) {
     if (Array.isArray(pages)) {
-        this.pages = pages.join("").replace(/[\r]+/g, "\n");
+        // this.pages = pages.join("").replace(/[\r]+/g, "\n");
+        this.pages = pages;
         return;
     }
     this.pages = pages.replace(/[\r]+/g, "\n");

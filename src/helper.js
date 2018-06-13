@@ -10,7 +10,7 @@ const createRegexObject = function (strings, groupName) {
         let name = string.replace(/[\?]/giu, '').replace(/\\s/giu, '_').toLowerCase();
         objects.push({
             test: new RegExp("^[\\s]*?" + string + "\\s*\\n*$", 'giu'),
-            fetch: new RegExp(string + "\\s?:?\\s*\\n+(.|\\n)*$", 'gimu'),
+            fetch: new RegExp("^[\\s\\n]*?"+string + "\\s?:?\\s*\\n+(.|\\n)*$", 'gimu'),
             name: name,
             group: groupName
         })
